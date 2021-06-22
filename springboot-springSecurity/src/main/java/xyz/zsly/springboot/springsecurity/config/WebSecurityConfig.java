@@ -1,13 +1,11 @@
 package xyz.zsly.springboot.springsecurity.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * @author zhang song
@@ -16,20 +14,32 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth.inMemoryAuthentication()
-        .withUser("root")
-        .password("root")
-        .roles("USER");
+        //指定加密方法
+        .passwordEncoder(passwordEncoder())
+        // 用户名
+        .withUser("zhangsong")
+        // 密码
+        .password(passwordEncoder().encode("zsly.xyz"))
+        //角色
+        .roles("USER")
+        //使用and添加多个用户
+        .and()
+        .withUser("admin").password(passwordEncoder().encode("1234")).roles("ADMIN");
   }
 
 //  @Override
 //  protected void configure(HttpSecurity http) throws Exception {
-//    super.configure(http);
-////    http.authorizeRequests().anyRequest().permitAll();
+//    // 开启
+//    http.authorizeRequests()
+//        .anyRequest().permitAll();
 //  }
+
+  private PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 
 //  @Override
 //  @Bean
