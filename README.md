@@ -13,3 +13,15 @@ Spring Boot功能解析以及与各种中间件整合的demo
 ### Spring Data JPA
 - [示例代码](https://github.com/Saul-Zhang/springboot-demo/tree/main/springboot-jpa)
 - [详细讲解](https://zsly.xyz/archives/springdatajpa%E7%9A%84%E4%BD%BF%E7%94%A8)
+
+## 认证授权
+### Spring Security
+- [示例代码](https://github.com/Saul-Zhang/springboot-demo/tree/main/springboot-springSecurity)
+- [详细讲解](https://zsly.xyz/archives/springboot-ji-cheng-springsecurity)
+
+
+## 其他
+### filter
+- [示例代码](https://github.com/Saul-Zhang/springboot-demo/tree/main/springboot-filter)
+- [详细讲解](https://zsly.xyz/archives/springbootzhong-shi-yong-filter)
+
