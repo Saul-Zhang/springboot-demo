@@ -3,3 +3,8 @@ spring:
     user:
       name: zhangsong
       password: zsly.xyz
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring-security?useUnicode=true&characterEncoding=utf8
+    username: root
+    password:
